@@ -15,6 +15,8 @@ set cursorline
 set number
 set list
 
+set hidden " Allow switching buffer even if some changes are unsaved.
+
 " Softtabs, 2 spaces.
 set tabstop=2
 set shiftwidth=2
