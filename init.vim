@@ -1,9 +1,10 @@
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'morhetz/gruvbox' " Theme
+Plug 'vim-airline/vim-airline' " Status line
+Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file search
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' } " Completion framework
+Plug '907th/vim-auto-save' " Autosave file
 
 call plug#end()
 
@@ -32,6 +33,28 @@ set spellcapcheck=""
 
 set termguicolors
 
+" Split navigation.
+nnoremap <C-Down>   <C-W><C-J>
+nnoremap <C-Up>     <C-W><C-K>
+nnoremap <C-Right>  <C-W><C-L>
+nnoremap <C-Left>   <C-W><C-H>
+
+" Split creation.
+" window
+nnoremap <A-Left>  :topleft  vnew<CR>
+nnoremap <A-Right> :botright vnew<CR>
+nnoremap <A-Up>    :topleft  new<CR>
+nnoremap <A-Down>  :botright new<CR>
+" buffer
+nnoremap <A-S-Left>   :leftabove  vnew<CR>
+nnoremap <A-S-Right>  :rightbelow vnew<CR>
+nnoremap <A-S-Up>     :leftabove  new<CR>
+nnoremap <A-S-Down>   :rightbelow new<CR>
+
+" CTRLP
+let g:ctrlp_custom_ignore = 'build\|git\|vscode'
+
+" Powerline
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts = 1
 
@@ -48,3 +71,6 @@ colorscheme gruvbox
 
 " YCM
 let g:ycm_confirm_extra_conf = 0
+
+" Auto save
+let g:auto_save = 1
