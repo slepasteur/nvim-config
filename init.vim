@@ -5,6 +5,7 @@ Plug 'vim-airline/vim-airline' " Status line
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file search
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' } " Completion framework
 Plug '907th/vim-auto-save' " Autosave file
+Plug 'preservim/nerdtree' " File tree
 
 call plug#end()
 
@@ -71,6 +72,19 @@ colorscheme gruvbox
 
 " YCM
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 " Auto save
 let g:auto_save = 1
+let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
+
+" Clang format on save.
+function! Formatonsave()
+  let l:formatdiff = 1
+  pyf /usr/share/clang/clang-format-10/clang-format.py
+endfunction
+
+autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+
+" Open nerd tree with C-n
+map <C-n> :NERDTreeToggle<CR>
